@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff1f5">
+<title>یه نامه برای تو 💌</title>
+<style>
+:root{--pink:#f4a9bf;--rose:#c94f78;--ink:#49313c;--paper:#fffafc;--muted:#886c78}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 15% 10%,#ffe1eb 0,transparent 30%),radial-gradient(circle at 85% 90%,#f9d8e8 0,transparent 32%),#fff7fa;color:var(--ink);font-family:Tahoma,"Segoe UI",sans-serif;min-height:100vh;overflow-x:hidden}
+main{width:min(720px,100%);margin:auto;padding:28px 18px 56px;position:relative}
+.glow{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.heart{position:absolute;bottom:-40px;opacity:.48;animation:floatUp linear infinite;color:#e57d9e}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+header{text-align:center;padding:24px 0 12px;position:relative}
+.eyebrow{font-size:.85rem;color:var(--rose);letter-spacing:.06em}
+h1{font-size:clamp(2rem,7vw,3.3rem);line-height:1.5;margin:10px 0 8px}
+.subtitle{color:var(--muted);line-height:2;margin:0 auto;max-width:480px}
+.envelope-wrap{display:flex;justify-content:center;margin:32px auto 18px;position:relative}
+.envelope{width:min(310px,85vw);height:205px;border:0;background:transparent;cursor:pointer;position:relative;filter:drop-shadow(0 15px 20px #cf789333);transition:transform .25s}
+.envelope:hover{transform:translateY(-5px) rotate(-1deg)}
+.env-body{position:absolute;inset:35px 0 0;background:#f4a8bd;border-radius:12px;overflow:hidden}
+.env-body:before,.env-body:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid}
+.env-body:before{left:0;border-width:0 0 145px 155px;border-color:transparent transparent #ee91ad transparent}
+.env-body:after{right:0;border-width:145px 0 0 155px;border-color:transparent transparent transparent #f8bfd0}
+.flap{position:absolute;top:35px;left:0;width:0;height:0;border-left:155px solid transparent;border-right:155px solid transparent;border-top:112px solid #f9c5d4;transform-origin:top;transition:transform .6s;z-index:3}
+.seal{position:absolute;z-index:4;top:92px;left:calc(50% - 23px);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#c94f78;color:white;font-size:22px;box-shadow:0 4px 12px #a8406233;transition:opacity .2s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .seal{opacity:0}
+.paper{position:absolute;z-index:2;left:17px;right:17px;top:43px;height:135px;border-radius:7px;background:#fffafc;padding:16px 10px;color:#9c526c;font-size:14px;line-height:1.8;transition:transform .7s}
+.envelope.open .paper{transform:translateY(-62px)}
+.hint{font-size:.9rem;color:var(--muted);text-align:center}
+.letter{display:none;position:relative;background:#fffdfd;border:1px solid #f4d8e2;border-radius:24px;padding:clamp(22px,5vw,38px);box-shadow:0 18px 50px #a83c6410;margin:30px 0 20px;animation:appear .6s ease}
+.letter.show{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.letter h2{text-align:center;color:var(--rose);margin-top:0;font-size:1.5rem}
+.letter p{line-height:2.2;margin:12px 0}
+.signature{text-align:left;color:var(--rose);font-weight:bold;margin-top:22px}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:24px 0}
+button.action{font:inherit;border:0;border-radius:999px;padding:13px 20px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+button.action:hover{transform:translateY(-2px)}
+.primary{background:var(--rose);color:white;box-shadow:0 8px 20px #c94f7833}
+.secondary{background:#ffe8ef;color:#a23c60}
+.memories{display:none;text-align:center;margin-top:22px;padding:25px;border-radius:22px;background:#fff0f5;border:1px dashed #e7a2b8;line-height:2}
+.memories.show{display:block;animation:appear .5s}
+.memories .big{font-size:2rem}
+footer{text-align:center;color:#a58693;font-size:.8rem;padding-top:20px;line-height:2}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="glow" id="glow" aria-hidden="true"></div>
+<main>
+<header>
+<div class="eyebrow">یه چیز کوچیک، از ته قلبم 💗</div>
+<h1>برای کسی که<br>لبخندش برام مهمه</h1>
+<p class="subtitle">شاید نتونم همین الان همه‌چی رو درست کنم،<br>ولی می‌خوام بدونی که برام مهمی… خیلی بیشتر از چیزی که فکر می‌کنی.</p>
+</header>
+
+<div class="envelope-wrap">
+<button class="envelope" id="envelope" aria-label="باز کردن نامه">
+<div class="paper">یه نامه‌ی کوچیک<br>برای آدمِ دوست‌داشتنیِ زندگی‌م 💌</div>
+<div class="env-body"></div><div class="flap"></div><div class="seal">♥</div>
+</button>
+</div>
+<div class="hint" id="hint">روی پاکت بزن تا نامه‌تو باز کنی ✉️</div>
+
+<section class="letter" id="letter">
+<h2>چند تا حرف از ته دلم 💌</h2>
+<p>عزیزِ دلم،</p>
+<p>نمی‌خوام با چند تا جمله وانمود کنم که ناراحتیت مهم نیست یا همه‌چی همین‌قدر ساده درست می‌شه. فقط می‌خوام بدونی احساست برام مهمه و دلم می‌خواد بفهمم چی ناراحتت کرده.</p>
+<p>اگه با حرف یا رفتارم دلت رو شکستم، واقعاً متأسفم. نمی‌خوام فقط بگم ببخش؛ می‌خوام با رفتارم نشون بدم که حرفت رو شنیدم و برام مهمه.</p>
+<p>لازم نیست همین الان جواب بدی یا حالت خوب بشه. هر وقت آماده بودی، دوست دارم به حرفات گوش بدم؛ بدون بحث کردن و بدون اینکه بخوام احساست رو کوچیک کنم.</p>
+<p>فقط خواستم یادت بندازم که بودنت و لبخندت برام ارزشمنده. ❤️</p>
+<p class="signature">با تمامِ مهرم، برای تو ♥</p>
+<div class="actions">
+<button class="action primary" id="surprise">یه سورپرایز دیگه… ✨</button>
+<button class="action secondary" id="edit">شخصی‌سازیش کن ✍️</button>
+</div>
+</section>
+
+<section class="memories" id="memories">
+<div class="big">🫶🏻 💗 🫶🏻</div>
+<h2>قرار نیست همه‌چی با یه دکمه درست بشه…</h2>
+<p>اما من دوست دارم قدم‌به‌قدم بهترش کنم.<br>اگه دلت خواست، یه روز آروم بشینیم، حرف بزنیم و به هم گوش بدیم.</p>
+<p>تا اون موقع، به خودت فرصت بده. تو لایق آرامش و مهربونی‌ای. 🌷</p>
+</section>
+<footer>با عشق ساخته شده، نه برای فشار آوردن؛ فقط برای گفتنِ حرفی که شاید گفتنش رو سخت بلد باشم. 💞</footer>
+</main>
+<script>
+const envelope=document.getElementById('envelope'),letter=document.getElementById('letter'),hint=document.getElementById('hint');
+envelope.addEventListener('click',()=>{envelope.classList.add('open');letter.classList.add('show');hint.textContent='این چند خط رو هر وقت دوست داشتی بخون 💗';setTimeout(()=>letter.scrollIntoView({behavior:'smooth',block:'start'}),300)});
+document.getElementById('surprise').addEventListener('click',()=>{const m=document.getElementById('memories');m.classList.toggle('show');if(m.classList.contains('show'))m.scrollIntoView({behavior:'smooth',block:'center'})});
+document.getElementById('edit').addEventListener('click',()=>alert('برای شخصی‌سازی، فایل HTML را با یک ویرایشگر متن باز کن و متن‌های داخل بخش letter را با حرف‌های خودت عوض کن. اسم و عکس‌های خودتون رو هم می‌تونیم بهش اضافه کنیم.'));
+const glow=document.getElementById('glow');
+for(let i=0;i<18;i++){const s=document.createElement('span');s.className='heart';s.textContent=['♥','♡','✦'][i%3];s.style.left=(Math.random()*100)+'%';s.style.animationDuration=(9+Math.random()*12)+'s';s.style.animationDelay=(-Math.random()*18)+'s';s.style.fontSize=(12+Math.random()*20)+'px';glow.appendChild(s)}
+</script>
+</body>
+</html>
